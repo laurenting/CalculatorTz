@@ -58,7 +58,7 @@ export default {
   data () {
     return {
       showPicker: false,
-      columns: ['自行支付', '银行资金存管', '理财通资金存管']
+      columns: ['自行支付', '银行资金存管', '理房通资金存管']
     }
   }
 }

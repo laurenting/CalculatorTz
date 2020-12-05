@@ -1,23 +1,23 @@
 <template>
-  <div id="loan">
+  <div id="registerSecurity">
     <van-field
-      :value="this.$store.state.loan.money"
+      :value="this.$store.state.registerSecurity.money"
       @input="handleInput"
       type="number"
       required
-      name="贷款"
-      label="贷款（元）"
-      placeholder="请填写贷款"
+      name="户口保证金"
+      label="户口保证金(¥)"
+      placeholder="请填写户口保证金"
       clearable
       input-align='right'
-      :rules="[{ required: true, message: '请填贷款' }]"
+      :rules="[{ required: true, message: '请填写户口保证金金额' }]"
     />
     <van-field
       readonly
       clickable
-      required
+      requiredyarn
       label="支付方式"
-      :value="this.$store.state.loan.way"
+      :value="this.$store.state.registerSecurity.way"
       input-align='right'
       placeholder="请选择支付方式"
       @click="showPicker = true"
@@ -30,7 +30,7 @@
         @confirm="onConfirm"
         default-index=2
       />
-    {{this.$store.state.loan.money}}
+    {{this.$store.state.registerSecurity.money}}
     </van-popup>
   </div>
 </template>
@@ -43,14 +43,14 @@ Vue.use(Picker)
 Vue.use(Field)
 Vue.use(Popup)
 export default {
-  name: 'Loan',
+  name: 'Register',
   methods: {
     handleInput: function (value) {
       this.$store.commit('setstatemoney', { name: this.$el.id, money: value })
     },
     onConfirm (value) {
       this.value = value
-      console.log(this.$el.id, this.value, this.$store.state.loan)
+      console.log(this.$el.id, this.value, this.$store.state.registerSecurity)
       this.$store.commit('setstateway', { name: this.$el.id, way: value })
       this.showPicker = false
     }
@@ -58,7 +58,7 @@ export default {
   data () {
     return {
       showPicker: false,
-      columns: ['自行支付', '银行资金存管', '理财通资金存管']
+      columns: ['自行支付', '银行资金存管', '理房通资金存管']
     }
   }
 }
