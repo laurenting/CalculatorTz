@@ -3,13 +3,13 @@ import VueRouter from 'vue-router'
 import TIEZHU from '../views/TIEZHU.vue'
 import Laurent from '../views/Laurent.vue'
 import Guitar from '../views/Guitar.vue'
+import Playlist from '../views/Playlist.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Laurent',
-    component: Laurent
+    redirect: '/laurent'
   },
   {
     path: '/tiezhu',
@@ -25,6 +25,11 @@ const routes = [
     path: '/guitar',
     name: 'Guitar',
     component: Guitar
+  },
+  {
+    path: '/playlist',
+    name: 'Playlist',
+    component: Playlist
   }
   // {
   //   path: '/about',

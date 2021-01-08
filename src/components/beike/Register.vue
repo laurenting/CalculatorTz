@@ -16,6 +16,7 @@
       readonly
       clickable
       requiredyarn
+      required
       label="支付方式"
       :value="this.$store.state.registerSecurity.way"
       input-align='right'
