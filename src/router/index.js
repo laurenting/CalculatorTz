@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Iron from '@/views/Iron'
-import Laurent from '../views/Laurent.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,7 +16,12 @@ const routes = [
   {
     path: '/laurent',
     name: 'Laurent',
-    component: Laurent
+    component: () => import('@/views/Index.vue')
+  },
+  {
+    path: '/Chart',
+    name: 'ChartTest',
+    component: () => import('@/views/Chart/index.vue')
   }
 ]
 
