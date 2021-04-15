@@ -4,124 +4,115 @@
       <el-row v-for=" item in dj" :key="item.name">
         <el-col :xs="16" :sm="16" :lg="16">
           <el-form-item :label="item.name">
-          <el-input v-model="item.value" clearable placeholder="请输入定金, 没有则无需填写"/>
-        </el-form-item>
-        </el-col>
-        <el-col :xs="8" :sm="8" :lg="8">
-          <el-form-item label="支付方式">
-            <el-select v-model="item.way" placeholder="请选择支付方式" >
-            <el-option
-              v-for="item in lessOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
+            <el-input v-model="item.value" clearable placeholder="请输入定金, 没有则无需填写" @change="alertWrongInput" />
           </el-form-item>
         </el-col>
+        <el-col :xs="8" :sm="8" :lg="8">
+          <!-- <el-form-item label="支付方式">
+            <el-select v-model="item.way" placeholder="请选择支付方式">
+              <el-option
+                v-for="item in lessOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select> -->
+          <!-- </el-form-item> -->
+        </el-col>
       </el-row>
-      <el-divider/>
+      <el-divider />
       <el-row v-for=" item in gfk" :key="item.name">
         <el-col :xs="16" :sm="16" :lg="16">
           <el-form-item :label="item.name">
-          <el-input v-model="item.value" clearable placeholder="请输入首付/购房款, 没有则无需填写"/>
-        </el-form-item>
+            <el-input v-model="item.value" clearable placeholder="请输入首付/购房款, 没有则无需填写" @change="alertWrongInput" />
+          </el-form-item>
         </el-col>
         <el-col :xs="8" :sm="8" :lg="8">
           <el-form-item label="支付方式">
-            <el-select v-model="item.way" placeholder="请选择支付方式" >
-            <el-option
-              v-for="item in moreOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
+            <el-select v-model="item.way" placeholder="请选择支付方式">
+              <el-option
+                v-for="items in moreOptions"
+                :key="items.value"
+                :label="items.label"
+                :value="items.value"
+              />
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-divider/>
+      <el-divider />
       <el-row>
         <el-col :xs="16" :sm="16" :lg="16">
           <el-form-item label="贷款">
-          <el-input v-model.number="loans.value" clearable placeholder="请输入贷款金额"/>
-        </el-form-item>
+            <el-input v-model.number="loans.value" clearable placeholder="请输入贷款金额" @change="alertWrongInput" />
+          </el-form-item>
         </el-col>
         <el-col :xs="8" :sm="8" :lg="8">
-          <el-form-item  label="若未获批">
+          <el-form-item label="若未获批">
             <el-select v-model="loans.way" placeholder="贷款未获批的处理方式">
-            <el-option
-              v-for="item in noLoanslOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in noLoanslOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-divider/>
+      <el-divider />
       <el-row>
         <el-col :xs="16" :sm="16" :lg="16">
           <el-form-item label="物业保证金">
-          <el-input v-model.number="management.value" clearable placeholder="请输入物业保证金"/>
-        </el-form-item>
+            <el-input v-model.number="management.value" clearable placeholder="请输入物业保证金" @change="alertWrongInput" />
+          </el-form-item>
         </el-col>
         <el-col :xs="8" :sm="8" :lg="8">
-          <el-form-item  label="支付方式">
+          <el-form-item label="支付方式">
             <el-select v-model="management.way" clearable placeholder="请选择支付方式">
-            <el-option
-              v-for="item in lessOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in lessOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :xs="16" :sm="16" :lg="16">
           <el-form-item label="户口保证金">
-          <el-input v-model.number="household.value" placeholder="请输入户口保证金"/>
-        </el-form-item>
+            <el-input v-model.number="household.value" placeholder="请输入户口保证金" @change="alertWrongInput" />
+          </el-form-item>
         </el-col>
         <el-col :xs="8" :sm="8" :lg="8">
-          <el-form-item  label="支付方式">
+          <el-form-item label="支付方式">
             <el-select v-model="household.way" placeholder="请选择支付方式">
-            <el-option
-              v-for="item in lessOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in lessOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-divider/>
+      <el-divider />
       <el-row>
-        <el-button class="cal-button" type="text" @click="calculate">计算</el-button>
+        <div style="font-size:5vh;text-align:center;">
+          放弃资金存管的金额为: {{ result }} 元
+        </div>
       </el-row>
     </el-form>
-    <el-dialog
-      title="放弃资金存管的金额为:"
-      :visible.sync="centerDialogVisible"
-      width="80%"
-      center>
-      <div class="result">{{ result }} 元</div>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="centerDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
-      </span>
-    </el-dialog>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Iron',
-  data () {
+  data() {
     return {
       centerDialogVisible: false,
       dj: [{
@@ -162,7 +153,6 @@ export default {
         value: null,
         way: ''
       },
-      result: 0,
       lessOptions: [{
         value: '银行资金存管', label: '银行资金存管'
       }, {
@@ -189,30 +179,34 @@ export default {
       sum: 0
     }
   },
-  methods: {
-    calculate () {
-      this.centerDialogVisible = true
+  computed: {
+    result() {
+      let res = 0
       this.dj.map(item => {
-        if (item.way === '自行支付') {
-          this.sum += Number(item.value)
-        }
+        res += Number(item.value)
       })
       this.gfk.map(item => {
         if (item.way === '自行支付' || item.way === '第三方担保支付') {
-          this.sum += Number(item.value)
+          res += Number(item.value)
         }
       })
       if (this.loans.way === '自筹房款且自行支付') {
-        this.sum += Number(this.loans.value)
+        res += Number(this.loans.value)
       }
       if (this.management.way === '自行支付') {
-        this.sum += Number(this.management.value)
+        res += Number(this.management.value)
       }
       if (this.household.way === '自行支付') {
-        this.sum += Number(this.household.value)
+        res += Number(this.household.value)
       }
-      this.result = this.sum
-      this.sum = 0
+      return res
+    }
+  },
+  methods: {
+    alertWrongInput(value) {
+      if (isNaN(value)) {
+        this.$message.warning(value)
+      }
     }
   }
 }
