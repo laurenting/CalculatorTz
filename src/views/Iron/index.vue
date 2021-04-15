@@ -175,8 +175,7 @@ export default {
         value: '自筹房款且自行支付', label: '自筹房款且自行支付'
       }, {
         value: '违约责任/合同终止', label: '违约责任/合同终止'
-      }],
-      sum: 0
+      }]
     }
   },
   computed: {
@@ -205,7 +204,7 @@ export default {
   methods: {
     alertWrongInput(value) {
       if (isNaN(value)) {
-        this.$message.warning(value)
+        this.$message.warning('请输入正确的 数字 格式')
       }
     }
   }
